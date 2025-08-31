@@ -3,6 +3,7 @@ run = "python3 bot.py"
 
 [nix]
 channel = "stable-25_05"
+packages = ["cacert", "ffmpeg-full", "freetype", "gettext", "lcms2", "libimagequant", "libjpeg", "libtiff", "libwebp", "libxcrypt", "openjpeg", "tcl", "tk", "zlib"]
 
 [deployment]
 run = ["sh", "-c", "python3 bot.py"]
