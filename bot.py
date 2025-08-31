@@ -14,7 +14,7 @@ from aiohttp import web
 
 from database.ia_filterdb import Media, Media2, choose_mediaDB, tempDict, db as clientDB
 from database.users_chats_db import db
-from info import CAPTION_LANGUAGES, DATABASE_URI, DATABASE_URI2, DATABASE_NAME, COLLECTION_NAME, USE_CAPTION_FILTER, MAX_B_TN, MOVIE_UPDATE_CHANNEL, OWNERID, USE_SECOND_DB
+from info import CAPTION_LANGUAGES, DATABASE_URI, DATABASE_URI2, DATABASE_NAME, ON_HEROKU, COLLECTION_NAME, USE_CAPTION_FILTER, MAX_B_TN, MOVIE_UPDATE_CHANNEL, OWNERID, USE_SECOND_DB
 from utils import temp
 from Script import script
 from plugins import web_server, check_expired_premium
