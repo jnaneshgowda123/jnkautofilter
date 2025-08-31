@@ -71,6 +71,7 @@ DATABASE_URI = environ.get('DATABASE_URI', "")
 DATABASE_URI2 = environ.get('DATABASE_URI2', None)
 DATABASE_NAME = environ.get('DATABASE_NAME', "yato")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Lucy_files')
+USE_SECOND_DB = is_enabled((environ.get('USE_SECOND_DB', "True")), True)  # True to enable second DB, False to disable
 
 # ============================
 # Movie Notification & Update Settings

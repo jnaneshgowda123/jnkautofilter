@@ -14,7 +14,7 @@ from aiohttp import web
 
 from database.ia_filterdb import Media, Media2, choose_mediaDB, tempDict, db as clientDB
 from database.users_chats_db import db
-from info import *
+from info import CAPTION_LANGUAGES, DATABASE_URI, DATABASE_URI2, DATABASE_NAME, COLLECTION_NAME, USE_CAPTION_FILTER, MAX_B_TN, MOVIE_UPDATE_CHANNEL, OWNERID, USE_SECOND_DB
 from utils import temp
 from Script import script
 from plugins import web_server, check_expired_premium
@@ -64,7 +64,7 @@ async def Lucy_start():
     await Media2.ensure_indexes()
     stats = await clientDB.command('dbStats')
     free_dbSize = round(512-((stats['dataSize']/(1024*1024))+(stats['indexSize']/(1024*1024))), 2)
-    if DATABASE_URI2 and free_dbSize<62: #if the primary db have less than 62MB left, use second DB.
+    if DATABASE_URI2 and free_dbSize<62 and USE_SECOND_DB: #if the primary db have less than 62MB left, use second DB.
         tempDict["indexDB"] = DATABASE_URI2
         logging.info(f"Since Primary DB have only {free_dbSize} MB left, Secondary DB will be used to store datas.")
     elif DATABASE_URI2 is None:
@@ -93,7 +93,7 @@ async def Lucy_start():
     bind_address = "0.0.0.0"
     await web.TCPSite(app, bind_address, PORT).start()
     await idle()
-    
+
 if __name__ == '__main__':
     loop = asyncio.get_event_loop()
     try:
